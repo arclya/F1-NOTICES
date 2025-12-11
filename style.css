@@ -1,0 +1,706 @@
+/* style.css CORREGIDO Y LIMPIO */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,700;1,900&display=swap');
+
+:root {
+    --f1-red: #ff1801;
+    --f1-black: #15151e; /* Negro Matte */
+    --f1-dark-grey: #38383f;
+    --tire-soft: #ff3b30;
+    --tire-medium: #ffcc00;
+    --tire-hard: #ffffff;
+    --tire-inter: #34c759;
+    --tire-wet: #007aff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #121212; /* Fondo oscuro global */
+    display: flex;
+    min-height: 100vh;
+    color: #e0e0e0;
+}
+
+/* --- SIDEBAR (Menú de Llantas) --- */
+.sidebar {
+    width: 100px;
+    background-color: #000;
+    /* Patrón de bandera a cuadros con CSS */
+    background-image: 
+        linear-gradient(45deg, #222 25%, transparent 25%), 
+        linear-gradient(-45deg, #222 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #222 75%), 
+        linear-gradient(-45deg, transparent 75%, #222 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    border-right: 4px solid var(--f1-red);
+}
+
+.f1-logo-mini {
+    width: 60px;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 5px rgba(255,0,0,0.8));
+}
+
+/* Botones con estilo de llanta */
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #111;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 5px solid;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.nav-btn span { display: none; }
+.nav-btn:hover { transform: scale(1.1) rotate(10deg); }
+
+/* Colores de compuestos */
+.tire-soft { border-color: var(--tire-soft); box-shadow: 0 0 10px var(--tire-soft); }
+.tire-medium { border-color: var(--tire-medium); box-shadow: 0 0 10px var(--tire-medium); }
+.tire-hard { border-color: var(--tire-hard); box-shadow: 0 0 10px var(--tire-hard); }
+.tire-inter { border-color: var(--tire-inter); }
+.tire-wet { border-color: var(--tire-wet); }
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+    background: radial-gradient(circle at top right, #1e1e1e, #000000);
+}
+
+/* HEADER GLOBAL */
+header {
+    background: 
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px; /* Efecto Fibra de Carbono */
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.top-logo {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    z-index: 10;
+}
+
+/* --- CARRUSEL 3D --- */
+.showroom-container {
+    perspective: 1000px;
+    margin-top: 60px;
+    height: 250px;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 15s infinite linear;
+}
+
+.car-card {
+    position: absolute;
+    width: 300px;
+    height: 180px;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -90px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.car-card img {
+    width: 100%;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+    animation: float 3s ease-in-out infinite;
+}
+
+.c1 { transform: rotateY(0deg) translateZ(400px); }
+.c2 { transform: rotateY(72deg) translateZ(400px); }
+.c3 { transform: rotateY(144deg) translateZ(400px); }
+.c4 { transform: rotateY(216deg) translateZ(400px); }
+.c5 { transform: rotateY(288deg) translateZ(400px); }
+
+@keyframes rotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+
+/* --- TABLAS Y REPORTES --- */
+.section-matte {
+    background-color: #f4f4f4;
+    padding: 40px;
+    color: var(--f1-black);
+}
+
+.f1-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.f1-table thead {
+    background-color: var(--f1-black);
+    color: white;
+}
+
+.f1-table th, .f1-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.f1-table tr:hover { background-color: #e2e2e2; }
+
+.race-report {
+    background: white;
+    border-left: 10px solid var(--f1-red);
+    padding: 30px;
+    margin: 40px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* --- SECCION 2026 --- */
+.future-divider {
+    height: 150px;
+    background: linear-gradient(135deg, var(--f1-red) 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, var(--f1-red) 25%, transparent 25%) -50px 0,
+                linear-gradient(315deg, var(--f1-red) 25%, transparent 25%),
+                linear-gradient(45deg, var(--f1-red) 25%, transparent 25%);
+    background-size: 100px 100px;
+    background-color: var(--f1-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+}
+
+.future-section {
+    background-color: var(--f1-black);
+    color: white;
+    padding: 80px 40px;
+    position: relative;
+}
+
+.future-title {
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    background: -webkit-linear-gradient(#fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+.grid-2026 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.info-box {
+    border: 2px solid var(--f1-red);
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+.info-box:hover { background: var(--f1-red); color: white; }
+
+/* --- FORMULARIO --- */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-top: 5px solid var(--f1-red);
+    color: #333;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #f0f0f0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-family: inherit;
+    color: #333;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-bottom-color: var(--f1-red);
+}
+
+button {
+    background: var(--f1-red);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* --- ESTILOS EXTRA PARA TRACKS.HTML --- */
+.track-3d {
+    flex-direction: column;
+    color: white;
+    text-shadow: 0 0 10px var(--f1-red);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.track-3d img {
+    max-height: 120px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.calendar-info {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+/* Sección de Pistas */
+.tracks-section {
+    padding: 40px;
+    background-color: #222; /* Fondo oscuro */
+    color: white;
+}
+
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.track-card {
+    background: #1a1a1a;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+    border-top: 4px solid var(--f1-red);
+}
+
+.track-card:hover { transform: translateY(-10px); }
+
+.track-img-container {
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+}
+
+.track-img-container img {
+    max-width: 80%;
+    max-height: 100%;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+}
+
+.track-data { padding: 20px; }
+
+.flag-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.location {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+}
+
+.stat { display: flex; flex-direction: column; font-size: 0.8rem; }
+.stat small { color: #888; text-transform: uppercase; font-size: 0.7rem; }
+.stat strong { color: white; font-size: 0.9rem; }
+
+.track-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.track-btn:hover {
+    background: var(--f1-red);
+    border-color: var(--f1-red);
+}
+
+/* --- NUEVO ESTILO TRACKS HORIZONTAL (PRO) --- */
+.tracks-container-pro {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px;
+}
+
+.track-row {
+    display: flex;
+    background: #15151e;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    min-height: 300px;
+    border-left: 10px solid var(--f1-red);
+}
+
+.track-map-area {
+    flex: 1;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-width: 300px;
+}
+
+.track-map-area img {
+    width: 80%;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    transition: transform 0.5s;
+}
+
+.track-row:hover .track-map-area img { transform: scale(1.1) rotate(2deg); }
+
+.track-info-area {
+    flex: 1.5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.track-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.track-title-row h2 { font-size: 2rem; margin: 0; color: white; }
+.track-flag { font-size: 3rem; }
+
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.data-point {
+    border-left: 2px solid var(--f1-red);
+    padding-left: 10px;
+}
+
+.data-point span { display: block; font-size: 0.8rem; color: #777; }
+.data-point strong { font-size: 1.2rem; color: white; }
+
+/* --- MEDIA --- */
+.media-header {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 3rem;
+    position: relative;
+    border-bottom: 5px solid var(--f1-red);
+}
+
+.live-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--f1-red);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: blink 2s infinite;
+}
+
+.rec-dot { width: 15px; height: 15px; background: var(--f1-red); border-radius: 50%; }
+@keyframes blink { 50% { opacity: 0.5; } }
+
+.video-section { padding: 40px; background: #1a1a1a; color: white; }
+.video-player-mockup {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    margin: 0 auto;
+    background: black;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+.video-thumb {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s;
+}
+.video-player-mockup:hover .video-thumb { opacity: 0.4; }
+.play-button {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 80px; height: 80px; background: rgba(255,255,255,0.2);
+    border: 2px solid white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);
+}
+.triangle {
+    width: 0; height: 0; 
+    border-top: 15px solid transparent; border-bottom: 15px solid transparent; border-left: 25px solid white;
+    margin-left: 5px;
+}
+.viewfinder-corner { position: absolute; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.5); }
+.top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+.top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+.bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+.video-ui {
+    position: absolute; bottom: 20px; left: 20px; font-family: monospace; color: var(--f1-red); font-size: 1.2rem;
+}
+.video-info { text-align: center; margin-top: 20px; }
+
+.radio-section { padding: 40px; background: #f4f4f4; color: #111; }
+.radio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.radio-card {
+    background: white; padding: 20px; border-left: 5px solid var(--tire-medium);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.audio-wave { display: flex; align-items: center; gap: 3px; height: 30px; margin-bottom: 15px; }
+.audio-wave span { display: block; width: 5px; background: var(--f1-black); animation: wave 1s infinite ease-in-out; height: 10%; }
+.active-wave span { background: var(--f1-red); }
+.audio-wave span:nth-child(1) { animation-delay: 0.1s; height: 40%; }
+.audio-wave span:nth-child(2) { animation-delay: 0.3s; height: 80%; }
+.audio-wave span:nth-child(3) { animation-delay: 0.5s; height: 50%; }
+.audio-wave span:nth-child(4) { animation-delay: 0.2s; height: 90%; }
+.audio-wave span:nth-child(5) { animation-delay: 0.4s; height: 60%; }
+.audio-wave span:nth-child(6) { animation-delay: 0.0s; height: 30%; }
+@keyframes wave { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(2); } }
+.radio-text { font-style: italic; font-family: monospace; background: #eee; padding: 10px; }
+
+.gallery-section { padding: 40px; background: var(--f1-black); color: white; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 10px; }
+.gallery-item { overflow: hidden; border: 2px solid #333; position: relative; }
+.gallery-item.wide { grid-column: span 2; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.5s; filter: grayscale(80%); }
+.gallery-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+
+
+/* --- TARJETAS DE EQUIPOS (TEAMS) PRO - FIX FINAL --- */
+.teams-container {
+    width: 100%;
+    padding: 40px;
+    display: grid;
+    /* GRID FORZADO A 280PX PARA QUE QUEPAN VARIOS */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.team-pro-card {
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-pro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.card-bg-logo {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 200px;
+    opacity: 0.1;
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+.team-header {
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-header h2 { font-size: 1.8rem; text-transform: uppercase; font-style: italic; margin: 0; }
+
+.team-stats {
+    padding: 20px;
+    font-size: 0.9rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; }
+.stat-label { display: block; color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+.stat-value { color: #fff; font-weight: bold; font-size: 1rem; }
+
+.drivers-section {
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #333;
+}
+
+.driver-pill {
+    background: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border-left: 3px solid white; 
+}
+
+/* Colores de Borde consolidados */
+.border-rb { border-top: 4px solid #3671C6; }      /* Red Bull Racing Blue */
+.border-ferrari { border-top: 4px solid #F91536; }
+.border-merc { border-top: 4px solid #6CD3BF; }
+.border-mcl { border-top: 4px solid #F58020; }
+.border-am { border-top: 4px solid #006F62; }      /* Aston Martin Green */
+.border-alpine { border-top: 4px solid #0090D0; }  /* Alpine Blue */
+.border-williams { border-top: 4px solid #041E42; }/* Williams Navy */
+.border-sauber { border-top: 4px solid #52e252; }  /* Kick Neon */
+.border-haas { border-top: 4px solid #B6BABD; }    /* Haas Grey/Red */
+
+/* --- FOOTER F1 --- */
+.f1-footer {
+    background-color: #15151e; /* Mismo color que el sidebar */
+    color: #fff;
+    padding: 60px 40px 20px;
+    margin-top: 60px;
+    border-top: 5px solid #E10600; /* Borde rojo oficial F1 */
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-brand h2 { font-size: 2rem; margin-bottom: 10px; }
+.footer-brand p { color: #888; font-size: 0.9rem; max-width: 300px; }
+
+.footer-nav h3, .footer-social h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #E10600;
+}
+
+.footer-nav ul { list-style: none; padding: 0; }
+.footer-nav ul li { margin-bottom: 10px; }
+.footer-nav ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-nav ul li a:hover { color: #fff; text-decoration: underline; }
+
+.social-icons { display: flex; gap: 15px; }
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #333;
+    color: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.social-btn:hover { background: #E10600; transform: translateY(-3px); }
+
+.footer-legal {
+    text-align: center;
+    padding-top: 20px;
+    color: #666;
+    font-size: 0.8rem;
+}
