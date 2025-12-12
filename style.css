@@ -21,7 +21,6 @@
 body {
     font-family: 'Titillium Web', sans-serif;
     background-color: #121212; /* Fondo oscuro global */
-    display: flex;
     min-height: 100vh;
     color: #e0e0e0;
 }
@@ -703,4 +702,196 @@ button {
     padding-top: 20px;
     color: #666;
     font-size: 0.8rem;
+}
+
+
+
+/* Estilo específico para la caja de créditos del proyecto F1 */
+        #caja-creditos-f1 {
+            background: linear-gradient(135deg, var(--f1-black) 0%, #2a2a2a 100%);
+            color: #fff;
+            padding: 40px;
+            margin: 40px;
+            border-left: 10px solid var(--f1-red); /* Gran borde rojo como un Pit Wall */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #caja-creditos-f1::after {
+            content: "PROJECT STATUS: FINISHED";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.8rem;
+            color: var(--f1-red); /* Texto de estado en rojo F1 */
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #caja-creditos-f1 h2 {
+            color: var(--tire-medium); /* Título en amarillo (neumático medio) */
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        #caja-creditos-f1 p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        #caja-creditos-f1 h4 {
+            color: var(--f1-red); /* Subtítulo en rojo F1 */
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+        }
+
+        .integrantes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .integrante-item-f1 {
+            background: rgba(255, 255, 255, 0.05); /* Fondo ligeramente transparente */
+            padding: 10px 15px;
+            border-left: 3px solid var(--tire-soft); /* Borde inicial en rojo blando */
+            font-weight: bold;
+            font-size: 1rem;
+            transition: border-left-color 0.3s;
+        }
+
+        .integrante-item-f1:hover {
+            border-left: 3px solid var(--f1-red); /* Borde rojo al pasar el ratón */
+        }
+
+        /* --- ESTILOS DEL FOOTER F1 --- */
+
+/* Importamos una fuente tecnológica y deportiva */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap');
+
+.f1-footer {
+    background-color: #15151E; /* Color oficial oscuro F1 */
+    color: #FFFFFF;
+    font-family: 'Titillium Web', sans-serif; /* Fuente estilo F1 */
+    padding-top: 0;
+    border-top: 1px solid #333;
+    margin-left: 100px;           /* Empuja el footer a la derecha para no chocar con el menú */
+    width: calc(100% - 100px);    /* Resta el ancho del menú para que no salga barra de scroll horizontal */
+}
+
+.f1-red-line {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #FF1801 20%, #800c00 100%); /* Rojo F1 con degradado */
+    border-bottom-right-radius: 10px; /* Un toque aerodinámico */
+}
+
+.f1-footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.f1-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Sección de Marca */
+.f1-branding h3 {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.f1-branding .season {
+    color: #FF1801; /* Rojo F1 */
+    font-weight: 800;
+}
+
+.f1-branding p {
+    font-size: 0.9rem;
+    color: #949498; /* Gris plateado */
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Sección del Equipo (Nombres) */
+.f1-team-section {
+    text-align: right;
+}
+
+.team-title {
+    font-size: 0.8rem;
+    color: #949498;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-bottom: 2px solid #FF1801;
+    display: inline-block;
+}
+
+.team-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Espacio entre nombres */
+}
+
+.team-list li {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.team-list li:hover {
+    color: #FF1801; /* Efecto hover rojo */
+    cursor: default;
+}
+
+.flag {
+    font-size: 0.8rem;
+    margin-right: 5px;
+    opacity: 0.7;
+}
+
+/* Sección Legal / Copyright */
+.f1-legal {
+    text-align: center;
+    border-top: 1px solid #38383f;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: #6a6a6e;
+}
+
+/* Responsividad para celulares */
+@media (max-width: 768px) {
+    .f1-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .f1-team-section {
+        text-align: center;
+    }
+    
+    .team-list {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
